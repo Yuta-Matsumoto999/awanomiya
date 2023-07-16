@@ -1,5 +1,5 @@
 import Repository from "./Repository";
-import { WpGraphQlPostConst } from "@/constants/WPGraphQLConst";
+import { WpGraphQlPostConst } from "../constants/WpGraphQlConst";
 
 class PostRepository {
     static getList() {

@@ -1,8 +1,7 @@
 import useSWR from "swr";
-import { WpGraphQlPostConst } from "@/constants/WPGraphQLConst";
-import PostType from "@/types/PostType";
-import PostService from "@/services/PostService";
-import { type } from "os";
+import { WpGraphQlPostConst } from "../../constants/WpGraphQlConst";
+import PostType from "../../types/PostType";
+import PostService from "../../services/PostService";
 
 const usePostListSwr = (staticPostList: PostType[]) => {
     const { data: postList} = useSWR(

@@ -1,9 +1,9 @@
-import Layout from "@/components/layout/layout";
-import PostService from "@/services/PostService";
-import PostType from "@/types/PostType";
-import usePostListSwr from "@/hooks/swr/usePostListSwr";
+import Layout from "../../components/layout/layout";
+import PostService from "../../services/PostService";
+import PostType from "../../types/PostType";
+import usePostListSwr from "../../hooks/swr/usePostListSwr";
 import { NextPage } from "next";
-import BlogListImage from "@/components/image/blogListImage";
+import BlogListImage from "../../components/image/blogListImage";
 
 const Blog: NextPage<{
     staticBlogList: PostType[]
