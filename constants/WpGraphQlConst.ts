@@ -65,6 +65,8 @@ export class WpGraphQlNewsConst {
         newses {
             edges {
                 node {
+                    id
+                    slug
                     title
                     content
                     date
