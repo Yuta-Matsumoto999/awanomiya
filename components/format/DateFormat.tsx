@@ -7,6 +7,6 @@ type Props = {
 
 export default function DateFormat({ date }: Props) {
     return (
-        <p className='text-xs mt-3'>{format(parseISO(date), 'yyyy.MM.dd', {locale:ja} )}</p>
+        <span>{format(parseISO(date), 'yyyy.MM.dd', {locale:ja} )}</span>
     )
 }
