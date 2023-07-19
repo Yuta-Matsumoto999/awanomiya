@@ -4,6 +4,7 @@ import PostService from "../../services/PostService";
 import PostDetailType from "../../types/PostDetailType";
 import ResponsiveImage from "../../components/image/responsiveImage";
 import usePostDetailSwr from "../../hooks/swr/usePostDetailSwr";
+import { Spinner, Stack } from '@chakra-ui/react'
 
 const BlogDetail: NextPage<{
     slug: string
@@ -13,9 +14,15 @@ const BlogDetail: NextPage<{
 
     if(!post) {
         return (
-            <div>Loading...</div>
+            <Layout title="Blog">
+                <Stack direction='row' spacing={4}>
+                    <Spinner size='xl' />
+                </Stack>
+                <p className="pt-3">Loading...</p>
+            </Layout>
         )
     }
+
     return (
         <Layout title="Blog">
             <div className="w-[90%] sm:w-[80%] lg:w-[60%] 2xl:w-[45%] h-[350px] sm:h-[500px] mt-10">
@@ -35,7 +42,7 @@ export async function getStaticPaths() {
 
     return {
         paths, 
-        fallback: true
+        fallback: false
     }
 }
 
