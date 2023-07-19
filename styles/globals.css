@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .responsiveImage {
-    object-fit: contain;
+    object-fit: cover;
     position: relative !important;
 }
