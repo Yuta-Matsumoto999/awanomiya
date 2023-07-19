@@ -4,5 +4,4 @@ export const bloglist = {
 
 export const newsList = {
     title_limit: 25,
-    category_limit: 5
 }
