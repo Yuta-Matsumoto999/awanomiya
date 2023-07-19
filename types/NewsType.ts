@@ -1,4 +1,3 @@
-import FeaturedImageType from "./FeaturedImageType"
 import TermsType from "./TermsType"
 
 interface NewsType {
