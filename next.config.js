@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["awanomiya.local"]
+    domains: process.env.ALLOWED_IMAGE_HOST.split(',')
   }
 }
 
