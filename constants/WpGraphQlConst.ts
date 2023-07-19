@@ -49,7 +49,7 @@ export class WpGraphQlPostConst {
         }
     }`
 
-    static allSlug = `query PostListQuery {
+    static allSlug = `query PostAllSlugQuery {
         posts(first: 10000) {
             edges {
                 node {
@@ -83,6 +83,39 @@ export class WpGraphQlNewsConst {
                             }
                         }
                     }
+                }
+            }
+        }
+    }`
+
+    static one = `query NewsOneQuery($id: ID!) {
+        news(id: $id, idType: SLUG) {
+            id
+            slug
+            date
+            title
+            content
+            featuredImage {
+                node {
+                    sourceUrl
+                }
+            }
+            terms {
+                edges {
+                    node {
+                        name
+                        slug
+                    }
+                }
+            }
+        }
+    }`
+
+    static allSlug = `query NewsAllSlugQuery {
+        newses(first: 10000) {
+            edges {
+                node {
+                    slug
                 }
             }
         }
