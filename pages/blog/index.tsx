@@ -6,7 +6,7 @@ import { NextPage } from "next";
 import ResponsiveImage from "../../components/image/responsiveImage";
 import Link from "next/link";
 import DateFormat from "../../components/format/DateFormat";
-import BlogTitleLimit from "../../components/format/BlogTitleLimit";
+import TitleLimit from "../../components/format/TitleLimit";
 
 const Blog: NextPage<{
     staticBlogList: PostType[]
@@ -15,8 +15,8 @@ const Blog: NextPage<{
     const blogList = usePostListSwr(staticBlogList);
     return (
         <Layout title="Blog">
-            <p className="text-3xl font-bold mt-14 mb-4">BLOG</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5 px-2 sm:px-10 lg:px-16 py-10 w-full">
+            <p className="text-3xl font-bold mt-14 mb-2">BLOG</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5 px-2 sm:px-10 lg:px-16 py-12 w-full">
                 {blogList!.map((blog) => {
                     return (
                         <Link href={`blog/${blog.slug}`} className="border w-[100%]" key={blog.id}>
@@ -28,8 +28,12 @@ const Blog: NextPage<{
                             </div>
                             <div className="p-5">
                                 <span className="border rounded-xl py-1 px-3">{blog.category.name}</span>
-                                <BlogTitleLimit blog={blog} />
-                                <DateFormat date={blog.date} />
+                                <div className="text-lg mt-3 font-bold">
+                                    <TitleLimit type="blog" title={blog.title} />
+                                </div>
+                                <div className="mt-2 text-xs">
+                                    <DateFormat date={blog.date} />
+                                </div>
                             </div>
                         </Link>
                     )
