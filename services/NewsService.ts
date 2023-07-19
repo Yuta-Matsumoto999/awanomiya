@@ -1,5 +1,5 @@
 import RepositoryFactory from "../repositories/RepositoryFactory";
-import NewsType from "../types/PostType";
+import NewsType from "../types/NewsType";
 
 class NewsService {
     static async getList(): Promise<NewsType[]> {
@@ -11,13 +11,9 @@ class NewsService {
                     title: data.node.title,
                     slug: data.node.slug,
                     date: data.node.date,
-                    excerpt: data.node.excerpt,
-                    featuredImage: {
-                        url: data.node.featuredImage.node.sourceUrl
-                    },
-                    category: {
-                        slug: data.node.categories.edges[0].node.slug,
-                        name: data.node.categories.edges[0].node.name
+                    terms: {
+                        slug: data.node.terms.edges[0].node.slug,
+                        name: data.node.terms.edges[0].node.name
                     }
                 }
 
