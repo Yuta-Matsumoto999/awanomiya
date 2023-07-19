@@ -3,7 +3,10 @@ import PostService from "../../services/PostService";
 import PostType from "../../types/PostType";
 import usePostListSwr from "../../hooks/swr/usePostListSwr";
 import { NextPage } from "next";
-import BlogListImage from "../../components/image/blogListImage";
+import ResponsiveImage from "../../components/image/responsiveImage";
+import Link from "next/link";
+import DateFormat from "../../components/format/DateFormat";
+import BlogTitleLimit from "../../components/format/BlogTitleLimit";
 
 const Blog: NextPage<{
     staticBlogList: PostType[]
@@ -12,22 +15,23 @@ const Blog: NextPage<{
     const blogList = usePostListSwr(staticBlogList);
     return (
         <Layout title="Blog">
-            <p className="text-3xl font-bold">BLOG</p>
-            <div className="flex flex-row px-20 py-10">
+            <p className="text-3xl font-bold mt-14 mb-4">BLOG</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5 px-2 sm:px-10 lg:px-16 py-10 w-full">
                 {blogList!.map((blog) => {
                     return (
-                        <div className="border w-[30%] mx-3" key={blog.id}>
-                            <BlogListImage
-                                src={blog.featuredImage.url}
-                                alt="no image"
-                            />
-                            <div className="p-5">
-                                <span>{blog.category.name}</span>
-                                <h1 className="font-bold">{blog.title}</h1>
-                                <p className="">{blog.excerpt}</p>
-                                <span>{blog.date}</span>
+                        <Link href={`blog/${blog.slug}`} className="border w-[100%]" key={blog.id}>
+                            <div className="w-[100%] h-[320px] md:h-[350px] lg:h-[400px]">
+                                <ResponsiveImage
+                                    src={blog.featuredImage.url}
+                                    alt="no image"
+                                />
                             </div>
-                        </div>
+                            <div className="p-5">
+                                <span className="border rounded-xl py-1 px-3">{blog.category.name}</span>
+                                <BlogTitleLimit blog={blog} />
+                                <DateFormat date={blog.date} />
+                            </div>
+                        </Link>
                     )
                 })}
             </div>
