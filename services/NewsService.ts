@@ -1,4 +1,5 @@
 import RepositoryFactory from "../repositories/RepositoryFactory";
+import NewsDetailType from "../types/NewsDetailType";
 import NewsType from "../types/NewsType";
 
 class NewsService {
@@ -20,6 +21,45 @@ class NewsService {
                 return news
             })
         } catch (err) {
+            return []
+        }
+    }
+
+    static async getOne({id}:{
+        id: string
+    }): Promise<NewsDetailType | null> {
+        try {
+            const res = await RepositoryFactory.news.getOne({ id });
+            const data = res.data.data.news
+            const news: NewsDetailType = {
+                id: data.id,
+                title: data.title,
+                slug: data.slug,
+                date: data.date,
+                content: data.content,
+                terms: {
+                    slug: data.terms.edges[0].node.slug,
+                    name: data.terms.edges[0].node.name
+                }
+            }
+
+            return news
+        } catch (err) {
+            return null
+        }
+    }
+
+    static async getAllSlug(): Promise<{
+        params: {
+            slug: string
+        }
+    }[]> {
+        try {
+            const res = await RepositoryFactory.news.getAllSlug()
+            return res.data.data.posts.edges.map((data: any) => {
+                return { params: { slug: data.node.slug } }
+            })
+        } catch {
             return []
         }
     }
