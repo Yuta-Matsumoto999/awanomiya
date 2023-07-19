@@ -2,7 +2,6 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import Link from "next/link";
 
 interface Props {
     children: ReactNode;
