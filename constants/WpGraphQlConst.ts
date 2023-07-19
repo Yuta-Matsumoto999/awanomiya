@@ -59,3 +59,30 @@ export class WpGraphQlPostConst {
         }
     }`
 }
+
+export class WpGraphQlNewsConst {
+    static list = `query NewsQuery {
+        newses {
+            edges {
+                node {
+                    title
+                    content
+                    date
+                    featuredImage {
+                        node {
+                        uri
+                        }
+                    }
+                    terms {
+                        edges {
+                            node {
+                                name
+                                slug
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+}
